@@ -20,11 +20,14 @@ module Authentication
     end
 
     def authenticated?
-      resume_session
+      current_user.present?
     end
 
     def require_authentication
-      resume_session || request_authentication
+      if current_user.nil?
+        head :unauthorized
+        return
+      end
     end
 
     def resume_session
@@ -33,15 +36,6 @@ module Authentication
 
     def find_session_by_cookie
       Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
-    end
-
-    def request_authentication
-      session[:return_to_after_authenticating] = request.url
-      redirect_to new_session_path
-    end
-
-    def after_authentication_url
-      session.delete(:return_to_after_authenticating) || root_url
     end
 
     def start_new_session_for(user)
