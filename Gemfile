@@ -64,3 +64,5 @@ group :test do
   gem "factory_bot_rails", "~> 6.5"
 end
 
+
+gem "pundit", "~> 2.5"

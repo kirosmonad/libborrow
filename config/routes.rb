@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :session, only: [:create, :destroy]
       resource :users, only: [:create]
+      resources :books
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
