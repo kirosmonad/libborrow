@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Routes
 
-Things you may want to cover:
+### Sign In and Sing out
 
-* Ruby version
+```
+    POST /api/v1/session
+    DELETE /api/v1/session
+```
 
-* System dependencies
+This routes work setting cookies since I'm assuming the FE app will be served from the same origin than the backend and we can rely in the browser cookie jar
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Books
+```
+    GET /api/v1/books -> list books
+    POST /api/v1/books -> create book
+    GET /api/v1/books/:id -> Show book
+    PUT /api/v1/books/:id -> update book
+    DELETE /api/v1/books/:id -> destroy book
+```
